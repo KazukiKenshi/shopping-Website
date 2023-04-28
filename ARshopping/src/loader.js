@@ -151,7 +151,7 @@ const loader = new GLTFloader.GLTFLoader();
 
 
 loader.load(
-  `<../assets/models/monkey.glb`,
+  '<web3-dmodel-threejs-main>models/${objToRender}/scene.gltf',
   function (gltf) {
     
     object = gltf.scene;
