@@ -105,18 +105,18 @@ import * as THREE from 'three';
       // import * as THREE from "https://cdn.skypack.dev/three@0.129.0/build/three.module.js";
 
 import * as orbcontrols from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/controls/OrbitControls.js";
+import * as MtlLoader from 'three/addons/loaders/MTLLoader';
 
 import * as GLTFloader from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js";
+import * as Loader from 'three/addons/loaders/OBJLoader.js';
 
       const mindarThree = new MindARThree({
 	container: document.querySelector("#container"),
       });
       const {renderer, scene, camera} = mindarThree;
       const anchor = mindarThree.addAnchor(70);
-      const geometry = new THREE.SphereGeometry( 0.1, 32, 16 );
-      const material = new THREE.MeshBasicMaterial( {color: 0x00ffff, transparent: true, opacity: 0.5} );
-      const sphere = new THREE.Mesh( geometry, material );
-      anchor.group.add(sphere);
+
+      
       const start = async() => {
 	await mindarThree.start();
 	renderer.setAnimationLoop(() => {
@@ -147,25 +147,33 @@ let controls;
 let objToRender = 'car';
 
 
-const loader = new GLTFloader.GLTFLoader();
+const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+const loader = new Loader.OBJLoader();
+const mtlLoader = new MtlLoader.MTLLoader();
 
+var materials = new THREE.MeshBasicMaterial();
+const path = "../src/assets/models/";
 
-loader.load(
-  '<web3-dmodel-threejs-main>models/${objToRender}/scene.gltf',
-  function (gltf) {
-    
-    object = gltf.scene;
-    scene.add(object);
-  },
-  function (xhr) {
-    
-    console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-  },
-  function (error) {
-    
-    console.error(error);
-  }
-);
+mtlLoader.setPath(path);
+loader.setPath(path);
+
+// load a resource
+mtlLoader.load( "untitled.mtl", function( materials ) {
+
+	materials.preload();
+	loader.setMaterials( materials );
+	
+	console.log(materials);
+	loader.load( 'untitled.obj', function ( object ) {
+		console.log(object);
+
+		scene.add( object );
+            anchor.group.add(object);
+
+	});
+
+});
+
 
 
 // const renderer = new THREE.WebGLRenderer({ alpha: true }); //Alpha: true allows for the transparent background
