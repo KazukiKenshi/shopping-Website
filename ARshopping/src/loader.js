@@ -99,24 +99,21 @@ import * as THREE from 'three';
 	mindarThree.renderer.setAnimationLoop(null);
       });
  */
-
       import * as THREE from 'three';
       import { MindARThree } from 'https://cdn.jsdelivr.net/npm/mind-ar@1.2.0/dist/mindar-face-three.prod.js';
       // import * as THREE from "https://cdn.skypack.dev/three@0.129.0/build/three.module.js";
 
-import * as orbcontrols from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/controls/OrbitControls.js";
+import * as MtlLoader from 'three/addons/loaders/MTLLoader';
 
-import * as GLTFloader from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js";
+import * as Loader from 'three/addons/loaders/OBJLoader.js';
 
       const mindarThree = new MindARThree({
 	container: document.querySelector("#container"),
       });
       const {renderer, scene, camera} = mindarThree;
-      const anchor = mindarThree.addAnchor(70);
-      const geometry = new THREE.SphereGeometry( 0.1, 32, 16 );
-      const material = new THREE.MeshBasicMaterial( {color: 0x00ffff, transparent: true, opacity: 0.5} );
-      const sphere = new THREE.Mesh( geometry, material );
-      anchor.group.add(sphere);
+      const anchor = mindarThree.addAnchor(168);
+
+      
       const start = async() => {
 	await mindarThree.start();
 	renderer.setAnimationLoop(() => {
@@ -144,28 +141,43 @@ let object;
 let controls;
 
 
-let objToRender = 'car';
 
+/*const geometry = new THREE.SphereGeometry( 0.1, 32, 16 );
+      const material2 = new THREE.MeshBasicMaterial( {color: 0x00ffff, transparent: true, opacity: 0.5} );
+      const sphere = new THREE.Mesh( geometry, material2 );
+      sphere.position.x = 0;
+      sphere.position.y = -1.5;
+      sphere.position.z = 0;
+      */
 
-const loader = new GLTFloader.GLTFLoader();
+const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+const loader = new Loader.OBJLoader();
+const mtlLoader = new MtlLoader.MTLLoader();
 
+var materials = new THREE.MeshBasicMaterial();
+const path = "../src/assets/models/";
 
-loader.load(
-  '<web3-dmodel-threejs-main>models/${objToRender}/scene.gltf',
-  function (gltf) {
-    
-    object = gltf.scene;
-    scene.add(object);
-  },
-  function (xhr) {
-    
-    console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-  },
-  function (error) {
-    
-    console.error(error);
-  }
-);
+mtlLoader.setPath(path);
+loader.setPath(path);
+
+// load a resource
+mtlLoader.load( "oculos.mtl", function( materials ) {
+
+	materials.preload();
+	loader.setMaterials( materials );
+	
+	console.log(materials);
+	loader.load( 'oculos.obj', function ( object ) {
+		
+            
+
+		scene.add( object );
+            anchor.group.add(object);
+
+	});
+
+});
+
 
 
 // const renderer = new THREE.WebGLRenderer({ alpha: true }); //Alpha: true allows for the transparent background
@@ -175,21 +187,15 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.getElementById("container3D").appendChild(renderer.domElement);
 
 
-camera.position.z = objToRender === "car" ? 25 : 500;
-
 
 const topLight = new THREE.DirectionalLight(0xffffff, 1); // (color, intensity)
 topLight.position.set(500, 500, 500) 
 topLight.castShadow = true;
 scene.add(topLight);
 
-const ambientLight = new THREE.AmbientLight(0x333333, objToRender === "car" ? 5 : 1);
+const ambientLight = new THREE.AmbientLight(0x333333);
 scene.add(ambientLight);
 
-
-if (objToRender === "") {
-  controls = new orbcontrols.OrbitControls(camera, renderer.domElement);
-}
 
 
 function animate() {
