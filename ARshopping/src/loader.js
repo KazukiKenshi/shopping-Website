@@ -103,15 +103,26 @@ import * as THREE from 'three';
       import { MindARThree } from 'https://cdn.jsdelivr.net/npm/mind-ar@1.2.0/dist/mindar-face-three.prod.js';
       // import * as THREE from "https://cdn.skypack.dev/three@0.129.0/build/three.module.js";
 
+<<<<<<< HEAD
 import * as MtlLoader from 'three/addons/loaders/MTLLoader';
 
+=======
+import * as orbcontrols from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/controls/OrbitControls.js";
+import * as MtlLoader from 'three/addons/loaders/MTLLoader';
+
+import * as GLTFloader from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js";
+>>>>>>> 0280d7876966733711b93f5f9af8623f9ca14878
 import * as Loader from 'three/addons/loaders/OBJLoader.js';
 
       const mindarThree = new MindARThree({
 	container: document.querySelector("#container"),
       });
       const {renderer, scene, camera} = mindarThree;
+<<<<<<< HEAD
       const anchor = mindarThree.addAnchor(168);
+=======
+      const anchor = mindarThree.addAnchor(70);
+>>>>>>> 0280d7876966733711b93f5f9af8623f9ca14878
 
       
       const start = async() => {
@@ -161,15 +172,24 @@ mtlLoader.setPath(path);
 loader.setPath(path);
 
 // load a resource
+<<<<<<< HEAD
 mtlLoader.load( "oculos.mtl", function( materials ) {
+=======
+mtlLoader.load( "untitled.mtl", function( materials ) {
+>>>>>>> 0280d7876966733711b93f5f9af8623f9ca14878
 
 	materials.preload();
 	loader.setMaterials( materials );
 	
 	console.log(materials);
+<<<<<<< HEAD
 	loader.load( 'oculos.obj', function ( object ) {
 		
             
+=======
+	loader.load( 'untitled.obj', function ( object ) {
+		console.log(object);
+>>>>>>> 0280d7876966733711b93f5f9af8623f9ca14878
 
 		scene.add( object );
             anchor.group.add(object);
