@@ -176,7 +176,11 @@ mtlLoader.load( "oculos.mtl", function( materials ) {
 	loader.load( 'oculos.obj', function ( object ) {
 		
             
-
+            object.position.y -= 1;
+            object.position.x -= 0.05;
+            object.rotation.set(0,0,0);
+            const n = 0.75;
+            object.scale.set(n,n,n);
 
 		scene.add( object );
             anchor.group.add(object);
