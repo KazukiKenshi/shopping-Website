@@ -1,0 +1,58 @@
+# MTL Exporter v1.0 by Seungwoo Oh at CLO - Virtual Fashion Inc.
+newmtl FABRIC_2_Copy_1_FRONT_790534
+Ka 0.086719 0.042351 0.049410
+Kd 0.337255 0.164706 0.192157
+Ks 0.075000 0.075000 0.075000
+Ns 28.763239
+illum 2
+d 1.000000
+map_Ka C:/Users/Dana/AppData/Local/CLO/CLO Standalone/12140/1099/baked_texture_aMe2pr7DNwhZ.png
+map_Kd C:/Users/Dana/AppData/Local/CLO/CLO Standalone/12140/1099/baked_texture_aMe2pr7DNwhZ.png
+newmtl FABRIC_2_Copy_3_FRONT_790554
+Ka 0.081677 0.027547 0.039275
+Kd 0.317647 0.107134 0.152743
+Ks 0.130000 0.130000 0.130000
+Ns 28.763239
+illum 2
+d 1.000000
+newmtl FABRIC_2_Copy_2_FRONT_790545
+Ka 0.041343 0.015239 0.020026
+Kd 0.160784 0.059266 0.077882
+Ks 0.075000 0.075000 0.075000
+Ns 28.763239
+illum 2
+d 1.000000
+map_Kn C:/Users/Dana/AppData/Local/CLO/CLO Standalone/12140/1099/baked_texture_gpYE3ykT82xd.png
+newmtl FABRIC_2_FRONT_790521
+Ka 0.081677 0.027547 0.039275
+Kd 0.317647 0.107134 0.152743
+Ks 0.110000 0.110000 0.110000
+Ns 28.763239
+illum 2
+d 1.000000
+map_Kn C:/Users/Dana/AppData/Local/CLO/CLO Standalone/12140/1099/baked_texture_FmB40Ohy9A53.png
+newmtl Material790763
+Ka 0.111928 0.055746 0.066046
+Kd 0.435294 0.216800 0.256855
+Ks 0.075000 0.075000 0.075000
+Ns 28.763239
+illum 2
+d 1.000000
+map_Ka C:/Users/Dana/AppData/Local/CLO/CLO Standalone/12140/1099/singstitch01.jpg
+map_Kd C:/Users/Dana/AppData/Local/CLO/CLO Standalone/12140/1099/singstitch01.jpg
+newmtl PT_FABRIC_FRONT_794999
+Ka 0.079660 0.039326 0.046385
+Kd 0.309804 0.152941 0.180392
+Ks 0.075000 0.075000 0.075000
+Ns 28.763239
+illum 2
+d 1.000000
+map_Ka C:/Users/Dana/AppData/Local/CLO/CLO Standalone/12140/1099/baked_texture_DCKOqxLfNjv6.png
+map_Kd C:/Users/Dana/AppData/Local/CLO/CLO Standalone/12140/1099/baked_texture_DCKOqxLfNjv6.png
+newmtl Material98095
+Ka 0.000000 0.000000 0.000000
+Kd 0.000000 0.000000 0.000000
+Ks 0.480000 0.480000 0.480000
+Ns 128.000000
+illum 2
+d 1.000000
